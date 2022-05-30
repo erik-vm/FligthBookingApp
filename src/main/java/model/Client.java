@@ -4,16 +4,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Client {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int clientId;
-    private String fistName;
+    private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
+    private LocalDate dateOfRegister;
+
+    public Client() {
+    }
+
+    public Client(String firstName, String lastName, String phoneNumber, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        dateOfRegister = LocalDate.now();
+    }
 
     public int getClientId() {
         return clientId;
@@ -23,13 +36,14 @@ public class Client {
         this.clientId = clientId;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
+
 
     public String getLastName() {
         return lastName;
@@ -55,14 +69,23 @@ public class Client {
         this.email = email;
     }
 
+    public LocalDate getDateOfRegister() {
+        return dateOfRegister;
+    }
+
+    public void setDateOfRegister(LocalDate dateOfRegister) {
+        this.dateOfRegister = dateOfRegister;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
                 "clientId=" + clientId +
-                ", fistName='" + fistName + '\'' +
+                ", fistName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
+                ", dateOfRegister=" + dateOfRegister +
                 '}';
     }
 }

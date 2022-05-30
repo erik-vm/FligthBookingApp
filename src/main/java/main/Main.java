@@ -1,6 +1,8 @@
 package main;
 
+import model.City;
 import model.Client;
+import model.Country;
 import persistence.RepositoryClient;
 
 public class Main {
@@ -8,10 +10,12 @@ public class Main {
 
         RepositoryClient repositoryClient = new RepositoryClient();
 
-        Client client1 = new Client();
-        client1.setFistName("Erik");
-        client1.setPhoneNumber("5464646");
+        Client client1 = new Client("John", "Doe", "+64646788", "Joh.Doe@mail.com");
 
         repositoryClient.saveClient(client1);
+
+        Country Estonia = new Country("Estonia");
+
+        City city = new City(Estonia, "Tallinn", "Harjumaa");
     }
 }
