@@ -1,7 +1,9 @@
 package menu;
 
 import model.City;
+import model.Country;
 import persistence.RepositoryCity;
+import persistence.RepositoryCountry;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,6 +11,7 @@ import java.util.Scanner;
 public class MenuCity {
 
     RepositoryCity repositoryCity = new RepositoryCity();
+    RepositoryCountry repositoryCountry = new RepositoryCountry();
 
     private int menuOptions(Scanner input) {
         System.out.println("\n/***************************************************/");
@@ -29,9 +32,9 @@ public class MenuCity {
         do {
             userChoice = menuOptions(input);
             switch (userChoice) {
-                case 1:
+                case 1:listAllCities(input);
                     break;
-                case 2:
+                case 2: saveCity(input);
                     break;
                 case 3:
                     break;
@@ -46,17 +49,38 @@ public class MenuCity {
         } while (userChoice != 100);
     }
 
-    private void listAllCities(){
-        for (City city : repositoryCity.cityList()){
+    private void listAllCities(Scanner input) {
+        for (City city : repositoryCity.cityList()) {
             System.out.println(city);
         }
     }
-   /* private void saveCity(Scanner input){
+
+    private void saveCity(Scanner input) {
         City city = new City();
-        System.out.println("Enter name for city: ");
-        String cityName = input.next();
-        if (cityName.matches("^[a-zA-Z]{3,20}$")){
-            city.setName(cityName);
+        Country country = new Country();
+        Boolean isValidName = false;
+        Boolean isValidCountry = false;
+        while (!isValidName) {
+            System.out.println("Enter name for city: ");
+            String cityName = input.next();
+            if (cityName.matches("[A-Za-z]++")) {
+                city.setName(cityName);
+                isValidName = true;
+            }
+            while (!isValidCountry){
+                System.out.println("Enter country city belongs to: ");
+                String countryName = input.next();
+                if (repositoryCountry.getCountryByName(countryName) == null){
+                    System.out.println("Entered country is not in database. Current countries in database: ");
+                    repositoryCountry.countryList();
+                    return;
+                }else {
+                    country = repositoryCountry.getCountryByName(countryName);
+                    city.setCountry(country);
+                    isValidCountry = true;
+                }
+            }
         }
-    }*/
+        repositoryCity.saveCity(city);
+    }
 }

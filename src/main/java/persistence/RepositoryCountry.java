@@ -31,4 +31,8 @@ public class RepositoryCountry {
     public Country getCountryById(int countryId){
         return entityManager.find(Country.class, countryId);
     }
+
+    public Country getCountryByName(String countryName){
+        return entityManager.createQuery("FROM Country WHERE name= :countryName", Country.class).setParameter("countryName", countryName).getSingleResult();
+    }
 }

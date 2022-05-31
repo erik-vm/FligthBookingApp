@@ -11,15 +11,13 @@ public class City {
     @JoinColumn(name = "countryId")
     private Country country;
     private String name;
-    private String area;
 
     public City() {
     }
 
-    public City(Country country, String name, String area) {
+    public City(Country country, String name) {
         this.country = country;
         this.name = name;
-        this.area = area;
     }
 
     public int getCityId() {
@@ -46,13 +44,6 @@ public class City {
         this.name = name;
     }
 
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
 
     @Override
     public String toString() {
@@ -60,7 +51,6 @@ public class City {
                 "cityId=" + cityId +
                 ", country=" + country +
                 ", name='" + name + '\'' +
-                ", area='" + area + '\'' +
                 '}';
     }
 }

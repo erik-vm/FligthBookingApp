@@ -33,7 +33,7 @@ public class MenuClient {
             userChoice = menuOptions(input);
             switch (userChoice) {
                 case 1:
-                    menuListAllClients(input);
+                    listAllClients(input);
                     break;
                 case 2:
                     addClient(input);
@@ -56,7 +56,7 @@ public class MenuClient {
     }
 
 
-    private void menuListAllClients(Scanner input) {
+    private void listAllClients(Scanner input) {
         List<Client> listClient = repositoryClient.listAllClients();
 
         if (listClient.size() > 0) {

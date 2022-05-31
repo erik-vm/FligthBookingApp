@@ -6,10 +6,12 @@ public class SubMenuOptions {
     boolean exit = false;
     private MenuClient menuClient;
     private MenuCountry menuCountry;
+    private MenuCity menuCity;
 
     public SubMenuOptions() {
         menuClient = new MenuClient();
         menuCountry = new MenuCountry();
+        menuCity = new MenuCity();
     }
 
     private int menuOptions(Scanner input) {
@@ -19,7 +21,7 @@ public class SubMenuOptions {
         System.out.println();
         System.out.println("1: Sub Menu - Client");
         System.out.println("2: Sub Menu - County");
-        System.out.println("3: Sub Menu - <NAME>");
+        System.out.println("3: Sub Menu - City");
         System.out.println("4: Sub Menu - <NAME>");
         System.out.println("100 - Quit");
         System.out.println("***************************************************");
@@ -37,7 +39,7 @@ public class SubMenuOptions {
                     break;
                 case 2: menuCountry.menuChoice(input);
                     break;
-                case 3:
+                case 3: menuCity.menuChoice(input);
                     break;
                 case 4:
                     break;
