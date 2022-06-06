@@ -16,8 +16,6 @@ public class Invoice {
     @JoinColumn (name = "tripId")
     private Trip trip;
     private int totalPerson;
-    private Date departureDate;
-    private Date arrivalDate;
     private double totalPrice;
 
     public int getInvoiceId() {
@@ -60,21 +58,6 @@ public class Invoice {
         this.totalPerson = totalPerson;
     }
 
-    public Date getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public Date getArrivalDate() {
-        return arrivalDate;
-    }
-
-    public void setArrivalDate(Date arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
 
     public double getTotalPrice() {
         return totalPrice;
@@ -92,8 +75,6 @@ public class Invoice {
                 ", client=" + client +
                 ", trip=" + trip +
                 ", totalPerson=" + totalPerson +
-                ", departureDate=" + departureDate +
-                ", arrivalDate=" + arrivalDate +
                 ", totalPrice=" + totalPrice +
                 '}';
     }

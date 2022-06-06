@@ -2,14 +2,15 @@ package model;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.DayOfWeek;
 
 @Entity
 public class Trip {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tripId;
     @ManyToOne
-    @JoinColumn (name = "planeCompanyId")
+    @JoinColumn(name = "planeCompanyId")
     private PlaneCompany planeCompany;
     @ManyToOne
     @JoinColumn(name = "departureCityId")
@@ -18,7 +19,8 @@ public class Trip {
     @JoinColumn(name = "destinationCityId")
     private City destinationCity;
 
-
+    private DayOfWeek dayOfWeek;
+    private Time departureTime;
     private Time duration;
     private double pricePerPerson;
 
@@ -62,6 +64,22 @@ public class Trip {
         this.duration = duration;
     }
 
+    public DayOfWeek getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(DayOfWeek dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+    }
+
+    public Time getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(Time departureTime) {
+        this.departureTime = departureTime;
+    }
+
     public double getPricePerPerson() {
         return pricePerPerson;
     }
@@ -72,8 +90,8 @@ public class Trip {
 
     @Override
     public String toString() {
-        return "Trip id: " + tripId + " | Departure: " + departureCity.getName() +"("+departureCity.getCountry().getName()+")"
-                + " | Destination: " + destinationCity.getName() + "("+destinationCity.getCountry().getName()+")" + " | Duration:" + duration
-                + " | Price per person: " +pricePerPerson + " | Plane company: " + planeCompany.getName();
+        return "Trip id: " + tripId + " | Departure: " + departureCity.getName() + "(" + departureCity.getCountry().getName() + ")"
+                + " | Destination: " + destinationCity.getName() + "(" + destinationCity.getCountry().getName() + ")" + " | Departure time: " + departureTime  +" | Duration: " + duration
+                + " | Price per person: " + pricePerPerson + " | Plane company: " + planeCompany.getName();
     }
 }

@@ -20,7 +20,7 @@ public class RepositoryInvoice {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(invoice);
-            entityManager.getTransaction();
+            entityManager.getTransaction().commit();
         }catch (Exception e){
             entityManager.getTransaction().rollback();
         }

@@ -80,7 +80,7 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "clientId=" + clientId +
-                ", fistName='" + firstName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +

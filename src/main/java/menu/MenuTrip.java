@@ -79,6 +79,7 @@ public class MenuTrip {
         boolean isValidPlaneCompany = false;
         boolean isValidDepCity = false;
         boolean isValidDesCity = false;
+        boolean validDepTime = false;
         boolean validDuration = false;
         boolean validPrice = false;
 
@@ -108,6 +109,19 @@ public class MenuTrip {
             if (repositoryCity.doesCityExist(desCity)) {
                 trip.setDestinationCity(repositoryCity.getCityByName(desCity));
                 isValidDesCity = true;
+            }
+        }
+        while (!validDepTime) {
+            System.out.println("Enter departure time (HH:MI:SS): ");
+            try {
+                Time depTime = Time.valueOf(input.next());
+                if (String.valueOf(depTime).matches("(?m)^(\\d\\d:\\d\\d:\\d\\d)")) {
+                    trip.setDepartureTime(depTime);
+                    validDepTime = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input");
+                ;
             }
         }
         while (!validDuration) {

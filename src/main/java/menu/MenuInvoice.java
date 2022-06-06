@@ -37,7 +37,7 @@ public class MenuInvoice {
                 case 1:
                     showAllInvoices(input);
                     break;
-                case 2:
+                case 2: saveInvoice(input);
                     break;
                 case 3:
                     break;
@@ -73,15 +73,11 @@ public class MenuInvoice {
         System.out.println("Select trip id:");
         int tripId = input.nextInt();
         invoice.setTrip(repositoryTrip.getTripById(tripId));
-        System.out.println("When do you want to leave? ()");
-        Date depTime = Date.valueOf(input.next());
-        invoice.setDepartureDate(depTime);
-        String time = String.valueOf(repositoryTrip.getTripById(tripId).getDuration());
-        Date newDate = Date.valueOf(time);
-invoice.setArrivalDate(depTime.);
-
+        System.out.println("How many people are traveling?");
+        int totalPassengers = input.nextInt();
+        invoice.setTotalPerson(totalPassengers);
+        invoice.setTotalPrice(repositoryTrip.getTripById(tripId).getPricePerPerson()*totalPassengers);
         invoice.setDateIssued(Date.valueOf(LocalDate.now()));
         repositoryInvoice.saveInvoice(invoice);
-
     }
 }

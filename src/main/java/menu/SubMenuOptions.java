@@ -11,6 +11,7 @@ public class SubMenuOptions {
     private MenuCity menuCity;
     private MenuPlaneCompany menuPlaneCompany;
     private MenuTrip menuTrip;
+    private MenuInvoice menuInvoice;
 
     public SubMenuOptions() {
         menuClient = new MenuClient();
@@ -18,6 +19,7 @@ public class SubMenuOptions {
         menuCity = new MenuCity();
         menuPlaneCompany = new MenuPlaneCompany();
         menuTrip = new MenuTrip();
+        menuInvoice = new MenuInvoice();
     }
 
     private int menuOptions(Scanner input) {
@@ -30,6 +32,7 @@ public class SubMenuOptions {
         System.out.println("3: Sub Menu - City");
         System.out.println("4: Sub Menu - Plane company");
         System.out.println("5: Sub Menu - Trips");
+        System.out.println("6: Sub Menu - Invoices");
         System.out.println("100 - Quit");
         System.out.println("***************************************************");
 
@@ -52,7 +55,7 @@ public class SubMenuOptions {
                     break;
                 case 5: menuTrip.menuChoice(input);
                     break;
-                case 6:
+                case 6: menuInvoice.menuChoice(input);
                     break;
                 case 7:
                     break;
