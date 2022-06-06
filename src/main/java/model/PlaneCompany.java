@@ -11,4 +11,46 @@ public class PlaneCompany {
     @ManyToOne
     @JoinColumn (name = "cityId")
     private City city;
+
+
+    public PlaneCompany() {
+    }
+
+    public PlaneCompany(String name, City city) {
+        this.name = name;
+        this.city = city;
+    }
+
+    public int getPlaneCompanyId() {
+        return planeCompanyId;
+    }
+
+    public void setPlaneCompanyId(int planeCompanyId) {
+        this.planeCompanyId = planeCompanyId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "PlaneCompany{" +
+                "planeCompanyId=" + planeCompanyId +
+                ", name='" + name + '\'' +
+                ", city=" + city +
+                '}';
+    }
 }

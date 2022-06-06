@@ -1,5 +1,7 @@
 package menu;
 
+import model.PlaneCompany;
+
 import java.util.Scanner;
 
 public class SubMenuOptions {
@@ -7,11 +9,15 @@ public class SubMenuOptions {
     private MenuClient menuClient;
     private MenuCountry menuCountry;
     private MenuCity menuCity;
+    private MenuPlaneCompany menuPlaneCompany;
+    private MenuTrip menuTrip;
 
     public SubMenuOptions() {
         menuClient = new MenuClient();
         menuCountry = new MenuCountry();
         menuCity = new MenuCity();
+        menuPlaneCompany = new MenuPlaneCompany();
+        menuTrip = new MenuTrip();
     }
 
     private int menuOptions(Scanner input) {
@@ -22,7 +28,8 @@ public class SubMenuOptions {
         System.out.println("1: Sub Menu - Client");
         System.out.println("2: Sub Menu - County");
         System.out.println("3: Sub Menu - City");
-        System.out.println("4: Sub Menu - <NAME>");
+        System.out.println("4: Sub Menu - Plane company");
+        System.out.println("5: Sub Menu - Trips");
         System.out.println("100 - Quit");
         System.out.println("***************************************************");
 
@@ -41,9 +48,9 @@ public class SubMenuOptions {
                     break;
                 case 3: menuCity.menuChoice(input);
                     break;
-                case 4:
+                case 4: menuPlaneCompany.menuChoice(input);
                     break;
-                case 5:
+                case 5: menuTrip.menuChoice(input);
                     break;
                 case 6:
                     break;

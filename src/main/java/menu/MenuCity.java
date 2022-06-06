@@ -63,22 +63,22 @@ public class MenuCity {
         while (!isValidName) {
             System.out.println("Enter name for city: ");
             String cityName = input.next();
-            if (cityName.matches("[A-Za-z]++")) {
+            if (cityName.matches("[A-Za-z\\s]*$")) {
                 city.setName(cityName);
                 isValidName = true;
             }
-            while (!isValidCountry){
-                System.out.println("Enter country city belongs to: ");
-                String countryName = input.next();
-                if (repositoryCountry.getCountryByName(countryName) == null){
-                    System.out.println("Entered country is not in database. Current countries in database: ");
-                    repositoryCountry.countryList();
-                    return;
-                }else {
-                    country = repositoryCountry.getCountryByName(countryName);
-                    city.setCountry(country);
-                    isValidCountry = true;
-                }
+        }
+        while (!isValidCountry){
+            System.out.println("Enter country city belongs to: ");
+            String countryName = input.next();
+            if (repositoryCountry.getCountryByName(countryName) == null){
+                System.out.println("Entered country is not in database. Current countries in database: ");
+                repositoryCountry.countryList();
+                return;
+            }else {
+                country = repositoryCountry.getCountryByName(countryName);
+                city.setCountry(country);
+                isValidCountry = true;
             }
         }
         repositoryCity.saveCity(city);

@@ -7,7 +7,7 @@ public class MainMenu {
     private static Scanner input;
 
     public static void main(String[] args) {
-        input = new Scanner(System.in);
+        input = new Scanner(System.in).useDelimiter("\n");
         subMenuOptions = new SubMenuOptions();
         subMenuOptions.menuChoice(input);
     }

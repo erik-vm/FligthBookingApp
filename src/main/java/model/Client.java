@@ -25,7 +25,6 @@ public class Client {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        dateOfRegister = LocalDate.now();
     }
 
     public int getClientId() {

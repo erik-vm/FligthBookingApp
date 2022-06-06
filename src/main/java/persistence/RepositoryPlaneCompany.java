@@ -28,7 +28,20 @@ public class RepositoryPlaneCompany {
     public PlaneCompany getPlaneCompanyById(int planeCompanyId){
         return entityManager.find(PlaneCompany.class, planeCompanyId);
     }
+    public PlaneCompany getPlaneCompanyByName(String name){
+        return entityManager.createQuery("FROM PlaneCompany WHERE name = :name", PlaneCompany.class).setParameter("name", name).getSingleResult();
+    }
     public List<PlaneCompany> planeCompanyList(){
         return entityManager.createQuery("FROM PlaneCompany", PlaneCompany.class).getResultList();
+    }
+
+    public boolean doesPlaneCompanyExist(String name){
+        boolean result = false;
+        for (PlaneCompany planeCompany : planeCompanyList()){
+            if (planeCompany.getName().equals(name)){
+                result = true;
+            }
+        }
+        return result;
     }
 }
